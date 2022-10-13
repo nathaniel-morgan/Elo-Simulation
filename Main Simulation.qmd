@@ -6,3 +6,23 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Main Idea
+
+Teams of various skills compete and their resulting elo's are calculated.
+Teams will compete in various structures to see how competition structure influences the winner, and also how accurately elo can measure their true skill. 
+
+```{r}
+#| include: false
+library(tidyverse)
+library(elo)
+```
+
+```{r}
+#Create the teams
+teams <- c("dragons","whales","wolves","leaves")
+skill <- c(2000,1800,1900,1500)
+
+#create bracket
+expand_grid(home=teams,away=teams) |> filter(home!=away)
+```
+
