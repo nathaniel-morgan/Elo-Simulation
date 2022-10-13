@@ -13,6 +13,7 @@ Teams will compete in various structures to see how competition structure influe
 
 ```{r}
 #| include: false
+library(magrittr)
 library(tidyverse)
 library(elo)
 ```
@@ -21,8 +22,9 @@ library(elo)
 #Create the teams
 teams <- c("dragons","whales","wolves","leaves")
 skill <- c(2000,1800,1900,1500)
-
+elos <- tibble(team=teams,skill=skill)
 #create bracket
-expand_grid(home=teams,away=teams) |> filter(home!=away)
+t1 <- expand_grid(home=teams,away=teams) |> filter(home!=away)
+t1 %<>% mutate(result=match(home,away))
 ```
 
